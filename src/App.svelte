@@ -4,4 +4,3 @@
 
 <h1>Hello World!</h1>
 <Quiz quizName="New Quiz" />
-<Quiz />
