@@ -35,11 +35,25 @@
     }
 </script>
 
+<style>
+    h5 {
+        color: blueviolet;
+    }
+
+    h5.wrong {
+        color: red;
+    }
+
+    h5.isCorrect {
+        color: green;
+    }
+</style>
+
 <h3>
     {@html question.question}
 </h3>
 {#if isAnswered}
-    <h5>
+    <h5 class:isCorrect class:wrong={!isCorrect}>
         {#if isCorrect}You got it right{:else}You goofed up{/if}
     </h5>
 {/if}

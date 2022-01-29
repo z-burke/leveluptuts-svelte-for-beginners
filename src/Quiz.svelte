@@ -7,7 +7,6 @@
     let quiz = getQuiz();
 
     onMount(() => {
-        score = 2;
         console.log("i mounted");
     })
 
@@ -58,7 +57,7 @@
 </style>
 
 <div>
-    <button on:click={resetQuiz}>Start New Quiz</button>
+    <button on:click|once={resetQuiz}>Start New Quiz</button>
 
     <h3>My Score: {score}</h3>
     <h4>Question #{questionNumber}</h4>
