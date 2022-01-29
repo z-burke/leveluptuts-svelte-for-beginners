@@ -1,9 +1,23 @@
 <script>
     import { fade, blur, fly, slide, scale } from 'svelte/transition';
+    import { onMount, beforeUpdate, afterUpdate, onDestroy } from 'svelte';
     import Question from "./Question.svelte";
     let activeQuestion = 0;
     let score = 0;
     let quiz = getQuiz();
+
+    onMount(() => {
+        score = 2;
+        console.log("i mounted");
+    })
+
+    beforeUpdate(() => {
+        console.log("before update");
+    })
+
+    afterUpdate(() => {
+        console.log("after update");
+    })
 
     async function getQuiz() {
         const res = await fetch(
@@ -28,7 +42,7 @@
     }
 
     // Reactive Statement
-    $: if (score > 1) {
+    $: if (score > 7) {
         alert("You won!");
         resetQuiz();
     }
