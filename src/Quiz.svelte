@@ -52,6 +52,9 @@
     .fade-wrapper {
         position: absolute;
     }
+    .container {
+        min-height: 500px;
+    }
 </style>
 
 <div>
@@ -60,19 +63,22 @@
     <h3>My Score: {$score}</h3>
     <h4>Question #{questionNumber}</h4>
     
-    {#await quiz}
-        Loading...
-    {:then data}
+    <div class="container">
 
-        {#each data.results as question, index}
-            {#if index == activeQuestion}    
-                <div in:fly={{ x: 100 }} out:fly={{ x: -200 }} class="fade-wrapper">
-                    <Question {nextQuestion} {question} />
-                </div>
-            {/if}
-        {/each}
+        {#await quiz}
+            Loading...
+        {:then data}
 
-    {/await}
+            {#each data.results as question, index}
+                {#if index == activeQuestion}    
+                    <div in:fly={{ x: 100 }} out:fly={{ x: -200 }} class="fade-wrapper">
+                        <Question {nextQuestion} {question} />
+                    </div>
+                {/if}
+            {/each}
+
+        {/await}
+    </div>
 </div>
 
 {#if isModalOpen}

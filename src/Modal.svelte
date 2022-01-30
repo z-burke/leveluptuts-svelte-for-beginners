@@ -1,7 +1,6 @@
 <script>
     import { fly, fade } from "svelte/transition";
     import { createEventDispatcher } from 'svelte';
-    let w;
     const dispatch = createEventDispatcher();
 </script>
 
@@ -21,7 +20,7 @@
     }
 </style>
 
-<div class="modal-bg" transition:fade bind:clientWidth={w}>
+<div class="modal-bg" transition:fade>
     <div class="modal" transition:fly={{ y: -100 }}>
         <button
             on:click={() => {
@@ -30,7 +29,6 @@
             Close
         </button>
         <!-- <slot>optional fallback</slot> -->
-        {w}
         <slot />
         <!-- <slot /> Generic slot  -->
     </div>
